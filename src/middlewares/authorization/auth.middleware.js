@@ -9,7 +9,7 @@ import { userSchema } from "../../features/user/schemas/user.schema.js";
 
 /**
  * Checks if the token block listed or not
- * @param {JWT from the request} token 
+ * @param {JWT from the request} token
  * @returns boolean
  */
 const isTokenBlockListed = async (token) => {
@@ -26,9 +26,9 @@ const isTokenBlockListed = async (token) => {
 
 /**
  * Authenticates user and authorizes various operations
- * @param {request} req 
- * @param {response} res 
- * @param {next middleware callback} next 
+ * @param {request} req
+ * @param {response} res
+ * @param {next middleware callback} next
  */
 export const auth = async (req, res, next) => {
   try {
@@ -56,7 +56,7 @@ export const auth = async (req, res, next) => {
     }
 
     // getting the user
-    const user = UserModel.findById(isValid.id);
+    const user = await UserModel.findById(isValid.id);
 
     // checking if token version matches
     if (!user || user.tokenVersion !== isValid.version) {

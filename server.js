@@ -2,6 +2,10 @@
 import "dotenv/config";
 import express from "express";
 import cookieParser from "cookie-parser";
+import swagger from "swagger-ui-express";
+import fs from "fs";
+import path from "path";
+import cors from "cors";
 
 // module imports
 import { connectToDb } from "./src/config/mongoose.config.js";
@@ -15,11 +19,21 @@ import friendshipRouter from "./src/features/friendships/routes/friendship.route
 import otpRouter from "./src/features/OTP/routes/otp.routes.js";
 import unknownPathHandlerMiddleware from "./src/middlewares/404Handler/unknownPathHandler.middleware.js";
 
+// setting the port number
+const PORT = process.env.PORT || 8000;
+
 // initializing express
 const app = express();
 
-// setting the port number
-const PORT = process.env.PORT || 3000;
+// cors config
+app.use(cors());
+
+// reading swagger config file
+const swaggerFilePath = path.join(path.resolve(), "swagger.json");
+const apiDocs = JSON.parse(fs.readFileSync(swaggerFilePath, "utf8"));
+
+// swagger-docs api
+app.use("/api-docs", swagger.serve, swagger.setup(apiDocs));
 
 // setting up data parsers to read data
 app.use(express.json());

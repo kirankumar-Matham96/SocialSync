@@ -10,3 +10,8 @@
 {"level":"error","message":"something went wrong while signing up...","service":"user-service"}
 {"error":{"code":11000,"errorResponse":{"code":11000,"errmsg":"E11000 duplicate key error collection: social-media.users index: email_1 dup key: { email: \"gautami.tripathi1010@codingninjas.com\" }","index":0,"keyPattern":{"email":1},"keyValue":{"email":"gautami.tripathi1010@codingninjas.com"}},"index":0,"keyPattern":{"email":1},"keyValue":{"email":"gautami.tripathi1010@codingninjas.com"}},"level":"error","service":"user-service"}
 {"level":"error","message":"Email exists already. Please login!","service":"user-service"}
+{"level":"error","message":"secretOrPrivateKey must have a value","service":"all-service"}
+{"level":"error","message":"secretOrPrivateKey must have a value","service":"all-service"}
+{"level":"error","message":"404 request path not found, please check the request and method","service":"all-service"}
+{"level":"error","message":"404 request path not found, please check the request and method","service":"all-service"}
+{"level":"error","message":"404 request path not found, please check the request and method","service":"all-service"}

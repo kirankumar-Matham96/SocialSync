@@ -11,7 +11,6 @@ export const connectToDb = async () => {
   try {
     // connecting to db
     await mongoose.connect(URL);
-    /* deprecated */ // await mongoose.connect(URL, {useNewUrlParser: true, useUnifiedTopology: true});
 
     console.log("Connected to mongodb database");
   } catch (error) {
