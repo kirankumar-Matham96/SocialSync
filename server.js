@@ -43,6 +43,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // routes
+app.get("/", (req, res) => {
+  res.send(
+    `
+    <html>
+      <head>
+        <title>SocialSync API</title>
+      </head>
+      <body>
+        <h1>Welcome to Social Sync API!</h1>
+        <h2>
+          Visit this for API Documentation: 
+          <a href='https://socialsync-way3.onrender.com/api-docs/'>Swagger API-DOCS</a>
+        </h2>
+      </body>
+    </html>`
+  );
+});
 app.use("/api/users", userRouter);
 app.use("/api/posts", auth, postsRouter);
 app.use("/api/comments", auth, commentsRouter);
