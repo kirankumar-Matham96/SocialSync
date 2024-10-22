@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3600"
+      "url": "https://socialsync-way3.onrender.com/"
     }
   ],
   "components": {
@@ -20,7 +20,7 @@
     }
   },
   "paths": {
-    "/api/users/register": {
+    "/api/users/signup": {
       "post": {
         "tags": ["Users"],
         "summary": "Registration",
@@ -41,7 +41,7 @@
                   "password": {
                     "type": "string"
                   },
-                  "type": {
+                  "gender": {
                     "type": "string"
                   }
                 }
@@ -69,7 +69,7 @@
       }
     },
 
-    "/api/users/login": {
+    "/api/users/signin": {
       "post": {
         "tags": ["Users"],
         "summary": "Login",
@@ -109,11 +109,11 @@
       }
     },
 
-    "/api/products/": {
+    "/api/users/get-all-details": {
       "get": {
         "tags": ["Products"],
-        "summary": "Get all products",
-        "description": "Get Products",
+        "summary": "Get details of a user with ID",
+        "description": "Get User Details By ID",
         "security": [
           {
             "JWT": []
