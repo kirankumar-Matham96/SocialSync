@@ -1,4 +1,4 @@
-# Social Media API (NODE-Repository-API)
+# SocialSync API (NODE-Repository-API)
 
 A Node.js application to replicate social media platform. Built with the repository-API pattern.
 
