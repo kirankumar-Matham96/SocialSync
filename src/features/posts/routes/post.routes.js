@@ -12,7 +12,7 @@ const router = express.Router();
 const postController = new PostController();
 
 router.post(
-  "/",
+  "/add",
   upload.single("imageUrl"),
   (req, res, next) => postValidationMiddleware.postValidation(req, res, next),
   (req, res, next) => postController.createPost(req, res, next)
