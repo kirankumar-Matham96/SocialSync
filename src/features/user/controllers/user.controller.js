@@ -28,7 +28,7 @@ class UserController {
       const newUser = await this.userRepository.sigUp(user);
 
       res
-        .status(200)
+        .status(201)
         .json({ success: true, message: "user added successfully", newUser });
     } catch (error) {
       next(error);

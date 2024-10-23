@@ -23,3 +23,9 @@
 {"level":"error","message":"something went wrong while signing up...","service":"all-service"}
 {"error":{"_message":"Users validation failed","errors":{"gender":{"kind":"enum","message":"'male' is not supported","name":"ValidatorError","path":"gender","properties":{"enumValues":["Male","Female","Others"],"message":"'male' is not supported","path":"gender","type":"enum","value":"male"},"value":"male"}},"message":"Users validation failed: gender: 'male' is not supported","name":"ValidationError"},"level":"error","service":"user-service"}
 {"level":"error","message":"something went wrong while signing up...","service":"all-service"}
+{"level":"error","message":"404 request path not found, please check the request and method","service":"all-service"}
+{"error":{"_message":"Users validation failed","errors":{"gender":{"kind":"enum","message":"'male' is not supported","name":"ValidatorError","path":"gender","properties":{"enumValues":["Male","Female","Others"],"message":"'male' is not supported","path":"gender","type":"enum","value":"male"},"value":"male"}},"message":"Users validation failed: gender: 'male' is not supported","name":"ValidationError"},"level":"error","service":"user-service"}
+{"level":"error","message":"something went wrong while signing up...","service":"all-service"}
+{"error":{"code":11000,"errorResponse":{"code":11000,"errmsg":"E11000 duplicate key error collection: SocialSync.users index: email_1 dup key: { email: \"newuser1@gmail.com\" }","index":0,"keyPattern":{"email":1},"keyValue":{"email":"newuser1@gmail.com"}},"index":0,"keyPattern":{"email":1},"keyValue":{"email":"newuser1@gmail.com"}},"level":"error","service":"user-service"}
+{"level":"error","message":"Email exists already. Please login!","service":"all-service"}
+{"level":"error","message":"Unexpected token ',', ...\"assword\": ,\n  \"gende\"... is not valid JSON","service":"all-service"}

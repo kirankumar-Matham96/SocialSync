@@ -26,7 +26,7 @@ export const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "gender is required"],
     enum: {
-      values: ["Male", "Female", "Others"],
+      values: ["Male", "Female", "Others", "male", "female", "others"],
       message: "'{VALUE}' is not supported",
     },
   },
