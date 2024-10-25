@@ -37,11 +37,11 @@ export const auth = async (req, res, next) => {
 
     // getting token from bearer token
     const authHeaders = req.headers["authorization"];
-    const token = authHeaders.split(" ")[1];
+    const token = authHeaders && authHeaders.split(" ")[1];
 
     // checking if token provided
-    if (!token) {
-      throw new ApplicationError("unauthorized(token not provided)", 400);
+    if (!token || !authHeaders) {
+      throw new ApplicationError("unauthorized(token not provided)", 401);
     }
 
     // checking if the token valid
@@ -68,6 +68,7 @@ export const auth = async (req, res, next) => {
 
     next();
   } catch (error) {
+    res.status(error.statusCode).send({ success: false, error: error.message });
     console.log(error);
   }
 };

@@ -40,12 +40,15 @@ class LikeController {
    */
   toggleLike = async (req, res, next) => {
     try {
-      const {userId} = req;
+      const { userId } = req;
       const { id } = req.params;
       const { type } = req.query;
 
       // validating the type of entity to toggle like
-      if (type != "Post" && type != "Comment") {
+      if (
+        type.trim().toLowerCase() != "post" &&
+        type.trim().toLowerCase() != "comment"
+      ) {
         throw new ApplicationError(
           `Type should be either Post or Comment, found ${type}`,
           400

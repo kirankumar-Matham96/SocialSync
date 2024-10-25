@@ -29,3 +29,79 @@
 {"error":{"code":11000,"errorResponse":{"code":11000,"errmsg":"E11000 duplicate key error collection: SocialSync.users index: email_1 dup key: { email: \"newuser1@gmail.com\" }","index":0,"keyPattern":{"email":1},"keyValue":{"email":"newuser1@gmail.com"}},"index":0,"keyPattern":{"email":1},"keyValue":{"email":"newuser1@gmail.com"}},"level":"error","service":"user-service"}
 {"level":"error","message":"Email exists already. Please login!","service":"all-service"}
 {"level":"error","message":"Unexpected token ',', ...\"assword\": ,\n  \"gende\"... is not valid JSON","service":"all-service"}
+{"error":{"statusCode":404},"level":"error","service":"user-service"}
+{"level":"error","message":"user not found","service":"all-service"}
+{"level":"error","message":"body is not defined","service":"all-service"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filename')","service":"all-service"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filename')","service":"all-service"}
+{"level":"error","message":"Something went wrong while fetching the posts...","service":"all-service"}
+{"level":"error","message":"Something went wrong while fetching the posts...","service":"all-service"}
+{"level":"error","message":"Something went wrong while fetching the posts...","service":"all-service"}
+{"level":"error","message":"Something went wrong while fetching the posts...","service":"all-service"}
+{"level":"error","message":"Something went wrong while fetching the posts...","service":"all-service"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filename')","service":"all-service"}
+{"level":"error","message":"Something went wrong while updating the post...","service":"all-service"}
+{"level":"error","message":"Something went wrong while updating the post...","service":"all-service"}
+{"level":"error","message":"body is not defined","service":"all-service"}
+{"level":"error","message":"Something went wrong while creating the comment...","service":"all-service"}
+{"level":"error","message":"user not allowed to update this comment","service":"all-service"}
+{"level":"error","message":"user not allowed to update this comment","service":"all-service"}
+{"level":"error","message":"user not allowed to update this comment","service":"all-service"}
+{"level":"error","message":"user not allowed to update this comment","service":"all-service"}
+{"level":"error","message":"Something went wrong while deleting the comment...","service":"all-service"}
+{"level":"error","message":"Something went wrong while deleting the comment...","service":"all-service"}
+{"level":"error","message":"Something went wrong while deleting the comment...","service":"all-service"}
+{"level":"error","message":"Something went wrong while deleting the comment...","service":"all-service"}
+{"level":"error","message":"Something went wrong while deleting the comment...","service":"all-service"}
+{"level":"error","message":"Something went wrong while deleting the comment...","service":"all-service"}
+{"level":"error","message":"Something went wrong while deleting the comment...","service":"all-service"}
+{"level":"error","message":"Something went wrong while deleting the comment...","service":"all-service"}
+{"level":"error","message":"user not allowed to update this comment","service":"all-service"}
+{"level":"error","message":"Type should be either Post or Comment, found undefined","service":"all-service"}
+{"level":"error","message":"Type should be either Post or Comment, found post","service":"all-service"}
+{"level":"error","message":"comment not found with the id 67192f5c8d823448c5f30555","service":"all-service"}
+{"level":"error","message":"404 request path not found, please check the request and method","service":"all-service"}
+{"level":"error","message":"404 request path not found, please check the request and method","service":"all-service"}
+{"level":"error","message":"Something went wrong while fetching the friends list...","service":"all-service"}
+{"level":"error","message":"Something went wrong while fetching the friends list...","service":"all-service"}
+{"level":"error","message":"Something went wrong while fetching the friends list...","service":"all-service"}
+{"level":"error","message":"Something went wrong while fetching the friends list...","service":"all-service"}
+{"level":"error","message":"Something went wrong while fetching the friends list...","service":"all-service"}
+{"level":"error","message":"Something went wrong while fetching the friends list...","service":"all-service"}
+{"level":"error","message":"Something went wrong while fetching the friends list...","service":"all-service"}
+{"level":"error","message":"Something went wrong while fetching the friends list...","service":"all-service"}
+{"level":"error","message":"Something went wrong while fetching the friends list...","service":"all-service"}
+{"level":"error","message":"Something went wrong while fetching the friends list...","service":"all-service"}
+{"level":"error","message":"Something went wrong while fetching the friends list...","service":"all-service"}
+{"level":"error","message":"Something went wrong while fetching the friends list...","service":"all-service"}
+{"level":"error","message":"Something went wrong while fetching the friends list...","service":"all-service"}
+{"level":"error","message":"Something went wrong while fetching the friends list...","service":"all-service"}
+{"error":{"code":11000,"errorResponse":{"code":11000,"errmsg":"E11000 duplicate key error collection: SocialSync.frinedships index: friends_1 dup key: { friends: undefined }","index":0,"keyPattern":{"friends":1},"keyValue":{}},"index":0,"keyPattern":{"friends":1},"keyValue":{}},"level":"error","service":"user-service"}
+{"level":"error","message":"Email exists already. Please login!","service":"all-service"}
+{"error":{"code":11000,"errorResponse":{"code":11000,"errmsg":"E11000 duplicate key error collection: SocialSync.users index: email_1 dup key: { email: \"vinod@gmail.com\" }","index":0,"keyPattern":{"email":1},"keyValue":{"email":"vinod@gmail.com"}},"index":0,"keyPattern":{"email":1},"keyValue":{"email":"vinod@gmail.com"}},"level":"error","service":"user-service"}
+{"level":"error","message":"Email exists already. Please login!","service":"all-service"}
+{"error":{"code":11000,"errorResponse":{"code":11000,"errmsg":"E11000 duplicate key error collection: SocialSync.frinedships index: friends_1 dup key: { friends: undefined }","index":0,"keyPattern":{"friends":1},"keyValue":{}},"index":0,"keyPattern":{"friends":1},"keyValue":{}},"level":"error","service":"user-service"}
+{"level":"error","message":"Email exists already. Please login!","service":"all-service"}
+{"level":"error","message":"Something went wrong while fetching the friends list...","service":"all-service"}
+{"level":"error","message":"Something went wrong while fetching the pending requests...","service":"all-service"}
+{"level":"error","message":"Something went wrong while accepting/rejecting the pending requests...","service":"all-service"}
+{"level":"error","message":"Something went wrong while accepting/rejecting the pending requests...","service":"all-service"}
+{"level":"error","message":"Something went wrong while accepting/rejecting the pending requests...","service":"all-service"}
+{"level":"error","message":"Something went wrong while accepting/rejecting the pending requests...","service":"all-service"}
+{"level":"error","message":"Something went wrong while accepting/rejecting the pending requests...","service":"all-service"}
+{"level":"error","message":"Something went wrong while fetching the friends list...","service":"all-service"}
+{"level":"error","message":"E11000 duplicate key error collection: SocialSync.friendships index: pendingRequests_1 dup key: { pendingRequests: undefined }","service":"all-service"}
+{"error":{"code":11000,"errorResponse":{"code":11000,"errmsg":"E11000 duplicate key error collection: SocialSync.users index: email_1 dup key: { email: \"vani@gmail.com\" }","index":0,"keyPattern":{"email":1},"keyValue":{"email":"vani@gmail.com"}},"index":0,"keyPattern":{"email":1},"keyValue":{"email":"vani@gmail.com"}},"level":"error","service":"user-service"}
+{"level":"error","message":"Email exists already. Please login!","service":"all-service"}
+{"error":{"code":11000,"errorResponse":{"code":11000,"errmsg":"E11000 duplicate key error collection: SocialSync.users index: email_1 dup key: { email: \"vani@gmail.com\" }","index":0,"keyPattern":{"email":1},"keyValue":{"email":"vani@gmail.com"}},"index":0,"keyPattern":{"email":1},"keyValue":{"email":"vani@gmail.com"}},"level":"error","service":"user-service"}
+{"level":"error","message":"Email exists already. Please login!","service":"all-service"}
+{"level":"error","message":"E11000 duplicate key error collection: SocialSync.friendships index: pendingRequests_1 dup key: { pendingRequests: undefined }","service":"all-service"}
+{"level":"error","message":"E11000 duplicate key error collection: SocialSync.friendships index: pendingRequests_1 dup key: { pendingRequests: undefined }","service":"all-service"}
+{"level":"error","message":"E11000 duplicate key error collection: SocialSync.friendships index: pendingRequests_1 dup key: { pendingRequests: undefined }","service":"all-service"}
+{"level":"error","message":"E11000 duplicate key error collection: SocialSync.friendships index: pendingRequests_1 dup key: { pendingRequests: undefined }","service":"all-service"}
+{"level":"error","message":"Cannot destructure property 'message' of '(intermediate value)' as it is undefined.","service":"all-service"}
+{"level":"error","message":"Cannot destructure property 'message' of '(intermediate value)' as it is undefined.","service":"all-service"}
+{"level":"error","message":"Cannot destructure property 'message' of '(intermediate value)' as it is undefined.","service":"all-service"}
+{"level":"error","message":"Cannot destructure property 'message' of '(intermediate value)' as it is undefined.","service":"all-service"}
+{"level":"error","message":"Cannot destructure property 'message' of '(intermediate value)' as it is undefined.","service":"all-service"}
+{"level":"error","message":"Cannot destructure property 'message' of '(intermediate value)' as it is undefined.","service":"all-service"}

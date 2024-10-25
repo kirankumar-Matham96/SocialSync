@@ -12,7 +12,7 @@ export const likeSchema = new mongoose.Schema({
   on_model: {
     type: String,
     enum: {
-      values: ["Post", "Comment"],
+      values: ["post", "comment"],
       message: "{VALUE} is not supported",
     },
   },

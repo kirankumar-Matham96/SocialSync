@@ -25,6 +25,7 @@ class UserRepository {
     try {
       const newUser = await this.userModel(userData);
       const userAdded = await newUser.save();
+
       return userAdded;
     } catch (error) {
       // logging error
@@ -149,6 +150,7 @@ class UserRepository {
       // modifying the objects
       const usersList = users.map((user) => {
         return {
+          id: user._id,
           name: user.name,
           email: user.email,
           gender: user.gender,

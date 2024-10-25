@@ -11,7 +11,7 @@ router.post("/send-request/:userId", (req, res, next) =>
   friendshipController.addRequestToPendingList(req, res, next)
 );
 
-router.get("/get-friends/:userId", (req, res, next) =>
+router.get("/get-friends", (req, res, next) =>
   friendshipController.getFriendsList(req, res, next)
 );
 

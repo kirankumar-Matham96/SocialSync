@@ -1,3 +1,5 @@
+import { body, validationResult } from "express-validator";
+
 class PostValidationMiddleware {
   /**
    *  To validate input post data

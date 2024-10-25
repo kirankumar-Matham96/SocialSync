@@ -18,9 +18,8 @@ class PostController {
   createPost = async (req, res, next) => {
     try {
       const { userId } = req;
-      req.body.imageUrl = req.file.filename;
+      req.body.imageUrl = (req.file && req.file.filename) || req.body.imageUrl;
       const newPost = await this.postRepository.create(req.body, userId);
-
       res
         .status(201)
         .json({ success: true, message: "post added successfully", newPost });
@@ -100,7 +99,7 @@ class PostController {
     try {
       const { postId } = req.params;
       const { userId } = req;
-      req.body.imageUrl = req.file.filename;
+      req.body.imageUrl = (req.file && req.file.filename) || req.body.imageUrl;
       const post = await this.postRepository.update(userId, postId, req.body);
       res
         .status(200)

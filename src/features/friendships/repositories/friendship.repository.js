@@ -6,12 +6,26 @@ import { friendshipSchema } from "../schemas/friendship.schema.js";
 import { ApplicationError } from "../../../middlewares/errorHandling/customErrorHandling.middleware.js";
 
 // model initialization
-const FriendshipModel = new mongoose.model("Friendship", friendshipSchema);
+const friendshipModel = new mongoose.model("Friendships", friendshipSchema);
 
 /**
  * Repository to handle all friendship related database operations
  */
 class FriendshipRepository {
+  addUser = async (userId) => {
+    try {
+      console.log("userId in friendship repo => ", userId);
+      const newUser = await friendshipModel({
+        userId: userId,
+      });
+      await newUser.save();
+      console.log("\n\nusercreated in friendship repo\n\n");
+      return { message: "friendship object created" };
+    } catch (error) {
+      console.log("\n\n\n", error, "\n\n\n");
+    }
+  };
+
   /**
    * To send the friend request
    * @param {id of the user who send the friend request} requesterId
@@ -21,14 +35,14 @@ class FriendshipRepository {
   addRequest = async (requesterId, requestedToId) => {
     try {
       // getting the user who got request
-      const userWhoGotRequest = await FriendshipModel.findOne({
+      const userWhoGotRequest = await friendshipModel.findOne({
         userId: requestedToId,
       });
 
       // if the user does not exists
       if (!userWhoGotRequest) {
         // adding user
-        const newUser = new FriendshipModel({
+        const newUser = new friendshipModel({
           userId: requestedToId,
           friends: [],
           pendingRequests: [requesterId],
@@ -41,12 +55,20 @@ class FriendshipRepository {
       const ifRequestExists = userWhoGotRequest.pendingRequests.findIndex(
         (request) => requesterId === request.toString()
       );
+      const ifUserIsAFriend = userWhoGotRequest.friends.findIndex(
+        (request) => requesterId === request.toString()
+      );
 
-      // if the request exists already
+      // if the request exists already or the user is already a frend
       if (ifRequestExists != -1) {
         throw new ApplicationError(
           "A friend request already sent to this user",
-          400
+          100
+        );
+      } else if (ifUserIsAFriend != -1) {
+        throw new ApplicationError(
+          "This user is already in your friend list",
+          100
         );
       }
 
@@ -76,10 +98,21 @@ class FriendshipRepository {
    */
   getFriends = async (userId) => {
     try {
+      console.log("\n\nuserId in repo => ", userId);
+
       // finding the user
-      const user = await FriendshipModel.findOne({ userId }).populate(
-        "friends"
-      );
+      const userObjectId = mongoose.Types.ObjectId.createFromHexString(userId);
+      console.log(typeof userObjectId);
+      console.log(userObjectId);
+
+      const user = await friendshipModel
+        .findOne({
+          userId: userObjectId,
+        })
+        .populate("friends");
+
+      console.log("\n\nuser in repo => ", user);
+      console.log("\n\nuser in repo => ", user.name);
 
       // modifying the users details to hide sensitive data (arranging necessary data only)
       const friendsList = user.friends.map((friend) => ({
@@ -107,9 +140,9 @@ class FriendshipRepository {
   getPendingRequests = async (userId) => {
     try {
       // getting the user from friendship model
-      const user = await FriendshipModel.findOne({ userId }).populate(
-        "pendingRequests"
-      );
+      const user = await friendshipModel
+        .findOne({ userId })
+        .populate("pendingRequests");
 
       // re-arranging the object
       const friendRequestList = user.pendingRequests.map((request) => {
@@ -142,7 +175,7 @@ class FriendshipRepository {
   toggle = async (userId, friendId) => {
     try {
       // getting the user
-      const user = await FriendshipModel.findOne({ userId });
+      const user = await friendshipModel.findOne({ userId });
 
       // checking if the friend exists by finding the index of friend
       const friendIndex = user.friends.findIndex(
@@ -192,7 +225,7 @@ class FriendshipRepository {
   resolveFriendship = async (userId, friendId, response) => {
     try {
       // getting user from friendship model
-      const user = await FriendshipModel.findOne({ userId });
+      const user = await friendshipModel.findOne({ userId });
 
       // finding index of pending request
       const requestIndex = user.pendingRequests.findIndex(

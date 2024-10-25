@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 // module imports
 import UserRepository from "../repositories/user.repository.js";
 import { ApplicationError } from "../../../middlewares/errorHandling/customErrorHandling.middleware.js";
+import FriendshipRepository from "../../friendships/repositories/friendship.repository.js";
 
 /**
  * Controller class to handle all the requests related to user.
@@ -26,6 +27,15 @@ class UserController {
       const hashedPassword = await bcrypt.hash(password, 12);
       const user = { name, email, password: hashedPassword, gender };
       const newUser = await this.userRepository.sigUp(user);
+
+      console.log("\n\nuser registered\n");
+      console.log(newUser, "\n\n");
+
+      // creating a user object in friendship model
+      const friendshipRepo = new FriendshipRepository();
+      const { message } = await friendshipRepo.addUser(newUser._id);
+
+      console.log(message);
 
       res
         .status(201)
@@ -102,7 +112,6 @@ class UserController {
   logoutUserFromAllDevices = async (req, res, next) => {
     try {
       const { userId } = req;
-      console.log("\n\n\nin controller=. ", { userId }, "\n\n\n");
 
       await this.userRepository.signOutAll(userId);
       res.status(200).json({

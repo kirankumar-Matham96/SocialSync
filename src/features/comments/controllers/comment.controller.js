@@ -48,7 +48,6 @@ class CommentController {
       const { commentId } = req.params;
       const { content } = req.body;
       const { userId } = req;
-      console.log("in comment controller => ", { content });
       const updatedComment = await this.commentRepository.update(
         userId,
         commentId,
@@ -98,10 +97,10 @@ class CommentController {
     try {
       const { commentId } = req.params;
       const { userId } = req;
-      const deletedComment = await this.commentRepository.delete(
+      const deletedComment = await this.commentRepository.delete({
         userId,
-        commentId
-      );
+        commentId,
+      });
 
       res.status(200).json({
         success: true,

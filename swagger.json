@@ -331,7 +331,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "postId",
             "in": "path",
             "description": "ID of the post",
             "required": true,
@@ -369,7 +369,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "postId",
             "in": "path",
             "description": "ID of the post",
             "required": true,
@@ -379,50 +379,48 @@
           }
         ],
         "requestBody": {
-          "description": "Product Details",
-          "required": true,
           "content": {
             "application/json": {
+              "description": "Post data",
               "schema": {
                 "type": "object",
                 "properties": {
                   "caption": {
                     "type": "string",
-                    "description": "Title of the post",
-                    "example": "New Caption"
+                    "description": "Caption for the post",
+                    "example": "Modified Post"
                   },
-
                   "imageUrl": {
                     "type": "string",
                     "format": "url",
-                    "description": "URL of the post image",
+                    "description": "URL of the product image",
                     "example": "http://example.com/image.jpg"
                   },
                   "content": {
                     "type": "string",
-                    "description": "Content of the post",
-                    "example": "This is the post comntent"
+                    "description": "Content for the modified post",
+                    "example": "This is a modified post body"
                   }
                 }
               }
             }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
           },
-          "responses": {
-            "200": {
-              "description": "OK"
-            },
-            "400": {
-              "description": "Bad request"
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "404": {
-              "description": "Not found"
-            },
-            "500": {
-              "description": "Server side error"
-            }
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Server side error"
           }
         }
       },
@@ -437,7 +435,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "postId",
             "in": "path",
             "description": "ID of the post",
             "required": true,
@@ -476,17 +474,6 @@
             "JWT": []
           }
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of the post",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -519,7 +506,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "postId",
             "in": "path",
             "description": "ID of the post",
             "required": true,
@@ -557,7 +544,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "postId",
             "in": "path",
             "description": "ID of the post",
             "required": true,
@@ -574,7 +561,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "comment": {
+                  "content": {
                     "type": "string",
                     "description": "Comment to a post",
                     "example": "I like this post"
@@ -601,7 +588,10 @@
             "description": "Server side error"
           }
         }
-      },
+      }
+    },
+
+    "/api/comments/{commentId}": {
       "put": {
         "tags": ["Comments"],
         "summary": "Update a comment by comment id",
@@ -613,7 +603,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "commentId",
             "in": "path",
             "description": "ID of the comment",
             "required": true,
@@ -630,7 +620,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "comment": {
+                  "content": {
                     "type": "string",
                     "description": "Comment to a post",
                     "example": "I love this post"
@@ -669,7 +659,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "commentId",
             "in": "path",
             "description": "ID of the comment",
             "required": true,
@@ -758,46 +748,15 @@
             "schema": {
               "type": "string"
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           },
-          "400": {
-            "description": "Bad request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not found"
-          },
-          "500": {
-            "description": "Server side error"
-          }
-        }
-      }
-    },
-
-    "/api/get-friends/{userId}": {
-      "get": {
-        "tags": ["Friendship"],
-        "summary": "Get Friends of a user",
-        "description": "Get Friends of a user by user id",
-        "security": [
           {
-            "JWT": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "User id",
-            "required": true,
+            "name": "type",
+            "in": "query",
+            "description": "post or comment",
+            "required": false,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": ["post", "comment"]
             }
           }
         ],
@@ -821,7 +780,37 @@
       }
     },
 
-    "/api/get-pending-requests": {
+    "/api/friends/get-friends": {
+      "get": {
+        "tags": ["Friendship"],
+        "summary": "Get Friends of the current user",
+        "description": "Get Friends of the loggedin user",
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Server side error"
+          }
+        }
+      }
+    },
+
+    "/api/friends/get-pending-requests": {
       "get": {
         "tags": ["Friendship"],
         "summary": "Get pending friends requests of the current user",
@@ -851,7 +840,7 @@
       }
     },
 
-    "/api/response-to-request/{friendId}": {
+    "/api/friends/response-to-request/{friendId}": {
       "get": {
         "tags": ["Friendship"],
         "summary": "Respond to a request by friend(user) id",
@@ -863,7 +852,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "friendId",
             "in": "path",
             "description": "Friend/Requester/User id",
             "required": true,
@@ -872,10 +861,10 @@
             }
           },
           {
-            "name": "status",
+            "name": "response",
             "in": "query",
             "description": "Accept or reject a request",
-            "required": false,
+            "required": true,
             "schema": {
               "type": "string",
               "enum": ["accept", "reject"]
@@ -902,7 +891,7 @@
       }
     },
 
-    "/api/toggle-friendship/{friendId}": {
+    "/api/friends/toggle-friendship/{friendId}": {
       "get": {
         "tags": ["Friendship"],
         "summary": "Toggle friendship by id",
@@ -914,7 +903,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "friendId",
             "in": "path",
             "description": "Friend/User id",
             "required": true,
@@ -943,7 +932,7 @@
       }
     },
 
-    "/api/send-request/{userId}": {
+    "/api/friends/send-request/{userId}": {
       "post": {
         "tags": ["Friendship"],
         "summary": "Send a friend rtequest",
@@ -955,7 +944,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "userId",
             "in": "path",
             "description": "Friend/User id",
             "required": true,

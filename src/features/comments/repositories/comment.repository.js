@@ -84,7 +84,7 @@ class CommentRepository {
       const post = await PostModel.findById(foundComment.postId);
       // checking if the user is comment creator or post creator
       if (
-        foundComment.userId.toString() !== userId ||
+        foundComment.userId.toString() !== userId &&
         foundComment.userId.toString() !== post.userId
       ) {
         throw new ApplicationError(
@@ -115,7 +115,7 @@ class CommentRepository {
    * @param {id of the comment to be deleted} commentId
    * @returns Object
    */
-  delete = async (commentId) => {
+  delete = async ({ userId, commentId }) => {
     try {
       // deleting the comment
       const comment = await CommentModel.findById(commentId);
@@ -124,7 +124,7 @@ class CommentRepository {
       // checking if the user is comment creator or post creator
       if (
         comment.userId.toString() !== userId ||
-        comment.userId.toString() !== foundPost.userId
+        foundPost.userId.toString() !== userId
       ) {
         throw new ApplicationError(
           "user not allowed to update this comment",

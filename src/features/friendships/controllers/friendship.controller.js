@@ -41,7 +41,10 @@ class FriendshipController {
   getFriendsList = async (req, res, next) => {
     try {
       const { userId } = req;
+      console.log("userId => ", userId);
       const friendsList = await this.friendshipRepository.getFriends(userId);
+      console.log("\nfriendsList in controller => ", friendsList);
+      console.log();
 
       res.status(200).json({
         success: true,

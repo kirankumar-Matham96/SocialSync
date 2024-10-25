@@ -192,7 +192,7 @@ class PostRepository {
       if (postData.imageUrl) {
         post.imageUrl = postData.imageUrl;
       }
-      
+
       await post.save();
 
       return post;

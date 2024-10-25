@@ -5,14 +5,9 @@ export const friendshipSchema = new mongoose.Schema({
     unique: true,
     type: mongoose.Schema.Types.ObjectId,
     ref: "Users",
+    required: true,
   },
-  friends: [
-    { unique: true, type: mongoose.Schema.Types.ObjectId, ref: "Users" },
-  ],
-  pendingRequests: [
-    { unique: true, type: mongoose.Schema.Types.ObjectId, ref: "Users" },
-  ],
-  unfriended: [
-    { unique: true, type: mongoose.Schema.Types.ObjectId, ref: "Users" },
-  ],
+  friends: [{ type: mongoose.Schema.Types.ObjectId, ref: "Users" }],
+  pendingRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: "Users" }],
+  unfriended: [{ type: mongoose.Schema.Types.ObjectId, ref: "Users" }],
 });

@@ -16,10 +16,10 @@ const CommentModel = new mongoose.model("Comments", commentSchema);
  */
 class LikeRepository {
   /**
-   * 
-   * @param {id of the logged in user} userId 
-   * @param {id of the comment or post who's like to be toggled} id 
-   * @param {type of entity (post or comment)} type 
+   *
+   * @param {id of the logged in user} userId
+   * @param {id of the comment or post who's like to be toggled} id
+   * @param {type of entity (post or comment)} type
    * @returns Object
    */
   toggle = async (userId, id, type) => {
@@ -39,7 +39,7 @@ class LikeRepository {
 
         /* updating related entity */
         // updating related post
-        if (type === "Post") {
+        if (type.trim().toLowerCase() === "post") {
           const postFound = await PostsModel.findById(id);
           if (!postFound) {
             throw new ApplicationError(`post not found with the id ${id}`);
@@ -49,7 +49,7 @@ class LikeRepository {
         }
 
         // updating related comment
-        if (type === "Comment") {
+        if (type.trim().toLowerCase() === "comment") {
           const commentFound = await CommentModel.findById(id);
           if (!commentFound) {
             throw new ApplicationError(`comment not found with the id ${id}`);
@@ -60,7 +60,7 @@ class LikeRepository {
 
         return { message: "liked", newLike };
       }
-      
+
       // if the like exists already
       /* deleting the like from related post/comment */
       // updating related post
@@ -80,7 +80,10 @@ class LikeRepository {
       if (type === "Comment") {
         const commentFound = await CommentModel.findById(id);
         if (!commentFound) {
-          throw new ApplicationError(`comment not found with the id ${id}`);
+          throw new ApplicationError(
+            `comment not found with the id ${id}`,
+            400
+          );
         }
         const likeIndex = commentFound.likes.findIndex(
           (likeId) => likeId.toString() == like._id
@@ -109,14 +112,14 @@ class LikeRepository {
 
   /**
    * To get the likes of a comment or post by it's id
-   * @param {id of the entity (post or comment)} id 
+   * @param {id of the entity (post or comment)} id
    * @returns Object
    */
   get = async (id) => {
     try {
       // getting likes from likes model
       const likes = await LikeModel.find({ likable: id }).populate("likedBy");
-      
+
       // modifying the object
       const modifiedLikes = likes.map((like) => ({
         likeId: like._id,

@@ -1,3 +1,5 @@
+import { body, validationResult } from "express-validator";
+
 class CommentValidationMiddleware {
   /**
    *  To validate input comment data
